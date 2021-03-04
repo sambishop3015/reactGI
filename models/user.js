@@ -1,7 +1,9 @@
-var mongoose = require('mongoose');
-var bcrypt = require('bcryptjs');
+const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+//var bcrypt = require('bcryptjs');
 
-var userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     username: {
         type: String,
         required: true
@@ -23,12 +25,17 @@ var userSchema = mongoose.Schema({
     // ]
 });
 
-userSchema.methods.generateHash = function (password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
+userSchema.methods.generateAuthToken = function () {
+    const token = jwt.sign({ _id: this._id }, config.get('jwtSecret'));
+    return token;
+}
 
-userSchema.methods.validPassword = function (password) {
-    return bcrypt.compareSync(password, this.local.password);
-};
+const User = mongoose.model('Users', userSchema)
+// userSchema.methods.generateHash = function (password) {
+//     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+// };
 
-module.exports = mongoose.model('User', userSchema);
+// userSchema.methods.validPassword = function (password) {
+//     return bcrypt.compareSync(password, this.local.password);
+// };
+exports.User = User
