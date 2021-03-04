@@ -2,10 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const dotenv = require('dotenv');
-// const bodyParser = require("body-parser");
-// const session = require("express-session");
-// const MongoStore = require("connect-mongo")(session);
-// const path = require("path");
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -24,16 +20,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactGitIntervi
     useCreateIndex: true,
     useFindAndModify: false
 });
-
-// We need to use sessions to keep track of our user's login status
-// app.use(
-//   session({
-//     secret: "keyboard cat",
-//     resave: false,
-//     saveUninitialized: false,
-//     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-//   })
-// );
 
 // logging
 if (process.env.NODE_ENV === "development") {
