@@ -55,7 +55,7 @@ By having quick access to popular interview questions, along with different solu
 
 ## Links
    * Deployed Link: https://react-git-interview-sb.herokuapp.com/
-   * Repo Link:     https://github.com/MSU-developmentTeam/react-git-interview
+   * Repo Link:     https://github.com/sambishop3015/reactGI
 
 ## Image
 ![Git.Interview](/public/assets/Images/Screenshots/main-page.png)
