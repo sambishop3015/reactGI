@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === "production") {
 
 dotenv.config({ path: './config/.env' });
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactGitInterviewDB", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactGitInterview", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
